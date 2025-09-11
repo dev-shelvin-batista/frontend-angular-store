@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container mt-3 text-end">
+    <button type="button" class="btn btn-success me-1 mb-3" (click)="openModalCurrentSale()" [disabled]="saleSer.current_sale_detail.length == 0"><i class="fa-solid fa-cart-shopping"></i> Current Sale <span class="badge bg-secondary">{{ saleSer.current_sale_detail.length }}</span></button>
+
+    <div class="row text-start">
+        <div class="col-3 mt-2" *ngFor="let item of list_products">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.description }}</h5>
+                    <p>
+                        <span class="badge bg-secondary">{{ item.reference }}</span><br>
+                        <span class="badge bg-success">{{ item.price | number }}</span>
+                    </p>                   
+
+                    <div class="col-12 tex-end">
+
+                        <div class="input-group mb-3">                            
+                            <input type="number" class="form-control" placeholder="" aria-label="" [(ngModel)]="item.count" min="0" [max]="item.stock">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-success" (click)="addProductSale(item)"><i class="fa-solid fa-add"></i></button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>        
+            </div>
+        </div>
+    </div>
+    
+</div>
+
