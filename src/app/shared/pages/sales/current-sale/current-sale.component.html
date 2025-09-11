@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title">Save data</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeWindow()"></button>
+</div>
+<div class="modal-body">   
+
+    <div class="container table-responsive text-end mt-2">
+
+        <table class="table table-striped text-start">
+            <thead>
+                <tr>
+                    <th scope="col">Description</th>
+                    <th scope="col">Reference</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>		
+                <tr *ngFor="let item of saleSer.current_sale_detail">
+                    <th scope="row">{{ item.description }}</th>
+                    <td>{{ item.reference }}</td>
+                    <td>{{ item.count }}</td>
+                    <td>{{ item.price | number }}</td>
+                    <td>{{ item.total | number }}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteProduct(item.product_id)"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="closeWindow()">Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="saveSale()" *ngIf="saleSer.current_sale_detail.length > 0">Send</button>
+</div>
