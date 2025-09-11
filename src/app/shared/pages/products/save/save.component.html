@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <h4 class="modal-title">Save data</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeWindow()"></button>
+</div>
+<div class="modal-body">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Description</span>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="product.description" placeholder="" aria-label="" maxlength="128">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Reference</span>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="product.reference" placeholder="" aria-label="">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Price</span>
+    </div>
+    <input type="number" class="form-control" [(ngModel)]="product.price" placeholder="" aria-label="" min="0">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Weight</span>
+    </div>
+    <input type="number" class="form-control" [(ngModel)]="product.weight" placeholder="" aria-label="" min="0">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Category</span>
+    </div>
+    <select class="form-control" [(ngModel)]="product.category_id">
+      <option value="">Select...</option>
+      <option [value]="item.id" *ngFor="let item of list_categories">{{ item.description }}</option>
+    </select>      
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Stock</span>
+    </div>
+    <input type="number" class="form-control" [(ngModel)]="product.stock" placeholder="" aria-label="" min="0">
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-warning" (click)="closeWindow()">Cancelar</button>
+  <button type="button" class="btn btn-success" (click)="saveData()">Send</button>
+</div>

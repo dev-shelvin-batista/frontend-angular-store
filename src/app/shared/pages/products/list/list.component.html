@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="container table-responsive text-end mt-2">
+    <button type="button" class="btn btn-success me-1 mb-3" (click)="openModalSaveProduct()"><i class="fa-solid fa-add"></i> Register Product</button>
+
+    <table class="table table-striped text-start">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>		
+            <tr *ngFor="let item of list_products">
+                <th scope="row">{{ item.description }}</th>
+                <td>{{ item.reference }}</td>
+                <td>{{ item.price | number }}</td>
+                <td>{{ item.stock | number }}</td>
+                <td>
+                    <button type="button" class="btn btn-warning me-1 btn-sm" (click)="openModalSaveProduct('edit', item.id)"><i class="fa-solid fa-pen"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteProduct(item.id)"><i class="fa-solid fa-trash"></i></button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
